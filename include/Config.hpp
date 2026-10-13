@@ -11,4 +11,7 @@ namespace Config {
 
   // config button on/off 
   constexpr int PinButton = 13;
+
+  // config led 
+  constexpr int PinLed = 2;
 }
