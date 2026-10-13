@@ -1,18 +1,28 @@
 #include <Arduino.h>
+#include <Bluetooth.hpp>
+#include <Config.hpp>
+#include <Button.hpp>
 
-// put function declarations here:
-int myFunction(int, int);
+Bluetooth bluetooth(Config::BluetoothName, Config::I2sBckPin, Config::I2sWsPin, Config::I2sDataOutPin);
+Button onOffButton(Config::PinButton);
 
-void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+bool isRunning = false;
+
+void setup(){
+  Serial.begin(Config::SerialSpeed);
+  onOffButton.begin();
 }
 
-void loop() {
-  // put your main code here, to run repeatedly:
-}
+void loop(){
+  if(onOffButton.wasPressed()){
+    isRunning = !isRunning;
 
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+    if(isRunning){
+      bluetooth.begin();
+      Serial.println("Bluetooth allumé");
+    } else {
+      bluetooth.stop();
+      Serial.println("Bluetooth éteint");
+    }
+  }
 }
