@@ -14,4 +14,6 @@ namespace Config {
 
   // config led 
   constexpr int PinLed = 2;
+
+  constexpr int PinBuzzer = 14;
 }
