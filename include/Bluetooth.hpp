@@ -17,6 +17,7 @@ class Bluetooth {
 
   void begin();
   void stop();
+  bool isConnected();
 
   private:
   std::string m_name;

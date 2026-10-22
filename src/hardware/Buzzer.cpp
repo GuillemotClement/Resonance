@@ -10,7 +10,7 @@ void Buzzer::begin()
 
 void Buzzer::start()
 {
-  tone(m_pin, 2000);
+  tone(m_pin, 1500, 150);
 }
 
 void Buzzer::startBluetoothAlert()
@@ -21,4 +21,13 @@ void Buzzer::startBluetoothAlert()
 void Buzzer::stop()
 {
   noTone(m_pin);
+}
+
+void Buzzer::connectedBluetoothAlert()
+{
+  tone(m_pin, 3000, 150);
+}
+
+void Buzzer::lostConnectedBluetoothAlert(){
+  tone(m_pin, 500, 150);
 }

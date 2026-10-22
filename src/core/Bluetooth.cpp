@@ -25,3 +25,7 @@ void Bluetooth::begin()
 void Bluetooth::stop(){
   m_sink.end(false);
 }
+
+bool Bluetooth::isConnected(){
+  return m_sink.is_connected();
+}
